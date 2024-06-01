@@ -223,9 +223,6 @@ class WebServer {
           builder.append("\n");
           builder.append("Result is: " + result);
 
-          // TODO: Include error handling here with a correct error code and
-          // a response that makes sense
-
         } else if (request.contains("github?")) {
           // pulls the query from the request and runs it with GitHub's REST API
           // check out https://docs.github.com/rest/reference/
@@ -246,6 +243,27 @@ class WebServer {
           builder.append("Check the todos mentioned in the Java source file");
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response based on what the assignment document asks for
+          String findNewRepo = "\"full_name\": ";
+          int repoNum = json.indexOf(findNewRepo);
+          int findNextComma = json.indexOf(",", repoNum);
+          int login = json.indexOf("\"login\": ");
+          int id = json.indexOf("\"id\":");
+          String repoName, repoOwner, repoId;
+          while(repoNum >=0){
+            repoName = json.substring(repoNum, findNextComma);
+            findNextComma = json.indexOf(",", login);
+            repoOwner = json.substring(login, findNextComma);
+            findNextComma = json.indexOf(",", id);
+            repoId = json.substring(id, findNextComma);
+            builder.append("Found repo with name" + repoName);
+            builder.append("Repo has owner named:" + repoOwner);
+            builder.append("Repo has id: " + repoId);
+
+            repoNum = json.indexOf("\"full_name\": ", repoNum + 1);
+            login = json.indexOf("\"login\": ", login + 1);
+            id = json.indexOf("\"id\":", id + 1);
+          }
+        } else if(request.contains("showmeapizza?")){
 
         } else {
           // if the request is not recognized at all
