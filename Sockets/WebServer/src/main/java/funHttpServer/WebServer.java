@@ -202,16 +202,17 @@ class WebServer {
           query_pairs = splitQuery(request.replace("multiply?", ""));
 
           // extract required fields from parameters
+          Integer num1, num2;
           try{
-          Integer num1 = Integer.parseInt(query_pairs.get("num1"));
-          Integer num2 = Integer.parseInt(query_pairs.get("num2"));
+          num1 = Integer.parseInt(query_pairs.get("num1"));
+          num2 = Integer.parseInt(query_pairs.get("num2"));
           }
           catch(Exception e){
               builder.append("HTTP/1.1 400 Bad Request");
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("Invalid number input, setting default values to 0");  
-              Integer num1 = 0;
-              Integer num2 = 0;
+              num1 = 0;
+              num2 = 0;
           }
           // do math
           Integer result = num1 * num2;
