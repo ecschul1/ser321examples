@@ -278,14 +278,21 @@ class WebServer {
               builder.append("HTTP/1.1 400 Bad Request");
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
-              builder.append("Invalid number formatting, please enter values of 1, 2, or 3, the default values will be set to 4 as to not display anything.");
+              builder.append("Invalid number formatting, please enter values of 1, 2, or 3 in the format of \\\"inspiration?num1=1&num2=2\\\", the default values will be set to 4 as to not display anything.");
               num1 = 4;
               num2 = 4; 
           } catch(NullPointerException e){
             builder.append("HTTP/1.1 400 Bad Request");
               builder.append("Content-Type: text/html; charset=utf-8\n");
               builder.append("\n");
-              builder.append("Something went wrong with the parameters, please enter values of 1, 2, or 3 in the format of \"inspiration?num1=1&num2=2\", the default values will be set to 4 as to not display anything.");
+              builder.append("A null pointer exception has occured, please enter values of 1, 2, or 3 in the format of \"inspiration?num1=1&num2=2\", the default values will be set to 4 as to not display anything.");
+              num1 = 4;
+              num2 = 4; 
+          } catch(Exception e){
+            builder.append("HTTP/1.1 400 Bad Request");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
+              builder.append("An unknown error has occured, please enter values of 1, 2, or 3 in the format of \"inspiration?num1=1&num2=2\", the default values will be set to 4 as to not display anything.");
               num1 = 4;
               num2 = 4; 
           }
