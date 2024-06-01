@@ -266,7 +266,7 @@ class WebServer {
           }
         } else if(request.contains("inspiration?")){
           Random random = new Random();
-          int randomInspriationNumber = random.nextInt(2);
+          int randomInspriationNumber = random.nextInt(3);
           builder.append("HTTP/1.1 200 OK\n");
           builder.append("Content-Type: text/html; charset=utf-8\n");
           builder.append("\n");
