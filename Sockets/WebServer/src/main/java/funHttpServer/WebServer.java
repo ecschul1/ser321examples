@@ -240,7 +240,9 @@ class WebServer {
           // response based on what the assignment document asks for
           String findNewRepo = "\"full_name\": ";
           int repoNum = json.indexOf(findNewRepo);
+          System.out.println(repoNum);
           int findNextComma = json.indexOf(",", repoNum);
+          System.out.println(findNextComma);
           int login = json.indexOf("\"login\": ");
           int id = json.indexOf("\"id\":");
           String repoName, repoOwner, repoId;
@@ -251,8 +253,8 @@ class WebServer {
             findNextComma = json.indexOf(",", id);
             repoId = json.substring(id, findNextComma);
             builder.append("HTTP/1.1 200 OK\n");
-           builder.append("Content-Type: text/html; charset=utf-8\n");
-           builder.append("\n");
+            builder.append("Content-Type: text/html; charset=utf-8\n");
+            builder.append("\n");
             builder.append("Found repo with name" + repoName);
             builder.append("Repo has owner named:" + repoOwner);
             builder.append("Repo has id: " + repoId);
