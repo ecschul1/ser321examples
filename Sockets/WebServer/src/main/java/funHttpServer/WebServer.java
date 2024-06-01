@@ -314,6 +314,7 @@ class WebServer {
         } else if(request.contains("concatenate?")){
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
           query_pairs = splitQuery(request.replace("concatenate?", ""));
+          try{
           String first = query_pairs.get("str1");
           String second = query_pairs.get("str2");
           String concatenated = first + second;
@@ -321,6 +322,12 @@ class WebServer {
           builder.append("Content-Type: text/html; charset=utf-8\n");
           builder.append("\n");
           builder.append("Your concatenated string result is: " + concatenated);
+          } catch(Exception e){
+              builder.append("HTTP/1.1 400 Bad Request");
+              builder.append("Content-Type: text/html; charset=utf-8\n");
+              builder.append("\n");
+              builder.append("Bad paremeters have been entered, the proper format would be concatenate?str1=first&str2=second.");
+          }
         }else {
           // if the request is not recognized at all
 
