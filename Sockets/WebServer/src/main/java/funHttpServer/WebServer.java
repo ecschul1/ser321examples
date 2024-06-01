@@ -311,7 +311,17 @@ class WebServer {
               num1 = 4;
               num2 = 4; 
           }
-        } else {
+        } else if(request.contains("concatenate?")){
+          Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+          query_pairs = splitQuery(request.replace("concatenate?", ""));
+          String first = query_pairs.get("str1");
+          String second = query_pairs.get("str2");
+          String concatenated = first + second;
+          builder.append("HTTP/1.1 200 OK\n");
+          builder.append("Content-Type: text/html; charset=utf-8\n");
+          builder.append("\n");
+          builder.append("Your concatenated string result is: " + concatenated);
+        }else {
           // if the request is not recognized at all
 
           builder.append("HTTP/1.1 400 Bad Request\n");
