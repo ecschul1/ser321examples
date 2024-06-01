@@ -240,13 +240,12 @@ class WebServer {
           // response based on what the assignment document asks for
           String findNewRepo = "\"full_name\":";
           int repoNum = json.indexOf(findNewRepo);
-          System.out.println(repoNum);
-          int findNextComma = json.indexOf(",", repoNum);
-          System.out.println(findNextComma);
+          int findNextComma;
           int login = json.indexOf("\"login\":");
           int id = json.indexOf("\"id\":");
           String repoName, repoOwner, repoId;
           while(repoNum >=0){
+            findNextComma = json.indexOf(",", repoNum);
             repoName = json.substring(repoNum, findNextComma);
             findNextComma = json.indexOf(",", login);
             repoOwner = json.substring(login, findNextComma);
