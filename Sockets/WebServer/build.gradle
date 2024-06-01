@@ -1,6 +1,8 @@
 // set as java application
 apply plugin: 'application'
 
+//define main class
+mainClassName = 'WebServer'
 
 task SimpleWebServer(type: JavaExec) {
   group 'http'
