@@ -270,13 +270,13 @@ class WebServer {
           builder.append("HTTP/1.1 200 OK\n");
           builder.append("Content-Type: text/html; charset=utf-8\n");
           builder.append("\n");
-          if(randomInspriationNumber = 0){
+          if(randomInspriationNumber == 0){
           builder.append("\"Engineering is achieving function while avoiding failure\" - Henry Petroski");
           }
-          if(randomInspriationNumber = 1){
+          if(randomInspriationNumber == 1){
           builder.append("\"Strive for perfection in everything you do. Take the best that exists and make it better. When it does not exist, design it.\" - Sir Henry Royce");
           }
-          if(randomInspriationNumber = 2){
+          if(randomInspriationNumber == 2){
           builder.append("\"To the optimist, the glass is half full. To the pessimist, the glass is half empty. To the engineer, the glass is twice as big as it needs to be.\" - Unknown Author");
           }
         } else {
