@@ -273,6 +273,9 @@ class WebServer {
           query_pairs = splitQuery(request.replace("inspiration?", ""));
           num1 = Integer.parseInt(query_pairs.get("num1"));
           num2 = Integer.parseInt(query_pairs.get("num2"));
+          builder.append("HTTP/1.1 200 OK\n");
+          builder.append("Content-Type: text/html; charset=utf-8\n");
+          builder.append("\n");
           if(num1 == 1 || num2 == 1){
             builder.append("\"Engineering is achieving function while avoiding failure\" - Henry Petroski");
             builder.append("\n");
@@ -308,9 +311,6 @@ class WebServer {
               num1 = 4;
               num2 = 4; 
           }
-          builder.append("HTTP/1.1 200 OK\n");
-          builder.append("Content-Type: text/html; charset=utf-8\n");
-          builder.append("\n");
         } else {
           // if the request is not recognized at all
 
