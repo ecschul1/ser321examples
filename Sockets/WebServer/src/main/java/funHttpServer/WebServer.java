@@ -313,8 +313,8 @@ class WebServer {
           }
         } else if(request.contains("concatenate?")){
           Map<String, String> query_pairs = new LinkedHashMap<String, String>();
-          query_pairs = splitQuery(request.replace("concatenate?", ""));
           try{
+          query_pairs = splitQuery(request.replace("concatenate?", ""));
           String first = query_pairs.get("str1");
           String second = query_pairs.get("str2");
           String concatenated = first + second;
