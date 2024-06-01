@@ -258,9 +258,10 @@ class WebServer {
             builder.append("Found repo with name" + repoName);
             builder.append("Repo has owner named:" + repoOwner);
             builder.append("Repo has id: " + repoId);
+            builder.append("\n");
 
-            repoNum = json.indexOf("\"full_name\": ", repoNum + 1);
-            login = json.indexOf("\"login\": ", login + 1);
+            repoNum = json.indexOf("\"full_name\":", repoNum + 1);
+            login = json.indexOf("\"login\":", login + 1);
             id = json.indexOf("\"id\":", id + 1);
           }
         } else if(request.contains("showmeapizza?")){
