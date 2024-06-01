@@ -265,18 +265,23 @@ class WebServer {
             id = json.indexOf("\"id\":", id + 1);
           }
         } else if(request.contains("inspiration?")){
-          Random random = new Random();
-          int randomInspriationNumber = random.nextInt(3);
+          Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+
+          // extract required fields from parameters
+          Integer num1, num2;
+          query_pairs = splitQuery(request.replace("inspiration?", ""));
+          num1 = Integer.parseInt(query_pairs.get("num1"));
+          num2 = Integer.parseInt(query_pairs.get("num2"));
           builder.append("HTTP/1.1 200 OK\n");
           builder.append("Content-Type: text/html; charset=utf-8\n");
           builder.append("\n");
-          if(randomInspriationNumber == 0){
+          if(num1 == 0 || num2 == 0){
           builder.append("\"Engineering is achieving function while avoiding failure\" - Henry Petroski");
           }
-          if(randomInspriationNumber == 1){
+          if(num1 == 1 || num2 == 1){
           builder.append("\"Strive for perfection in everything you do. Take the best that exists and make it better. When it does not exist, design it.\" - Sir Henry Royce");
           }
-          if(randomInspriationNumber == 2){
+          if(num1 == 2 || num2 == 2){
           builder.append("\"To the optimist, the glass is half full. To the pessimist, the glass is half empty. To the engineer, the glass is twice as big as it needs to be.\" - Unknown Author");
           }
         } else {
