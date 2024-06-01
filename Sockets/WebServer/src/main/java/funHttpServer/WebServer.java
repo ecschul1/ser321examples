@@ -273,6 +273,18 @@ class WebServer {
           query_pairs = splitQuery(request.replace("inspiration?", ""));
           num1 = Integer.parseInt(query_pairs.get("num1"));
           num2 = Integer.parseInt(query_pairs.get("num2"));
+          if(num1 == 1 || num2 == 1){
+            builder.append("\"Engineering is achieving function while avoiding failure\" - Henry Petroski");
+            builder.append("\n");
+            }
+            if(num1 == 2 || num2 == 2){
+            builder.append("\"Strive for perfection in everything you do. Take the best that exists and make it better. When it does not exist, design it.\" - Sir Henry Royce");
+            builder.append("\n");
+            }
+            if(num1 == 3 || num2 == 3){
+            builder.append("\"To the optimist, the glass is half full. To the pessimist, the glass is half empty. To the engineer, the glass is twice as big as it needs to be.\" - Unknown Author");
+            builder.append("\n");
+            }
           }
           catch(NumberFormatException e){
               builder.append("HTTP/1.1 400 Bad Request");
@@ -299,18 +311,6 @@ class WebServer {
           builder.append("HTTP/1.1 200 OK\n");
           builder.append("Content-Type: text/html; charset=utf-8\n");
           builder.append("\n");
-          if(num1 == 1 || num2 == 1){
-          builder.append("\"Engineering is achieving function while avoiding failure\" - Henry Petroski");
-          builder.append("\n");
-          }
-          if(num1 == 2 || num2 == 2){
-          builder.append("\"Strive for perfection in everything you do. Take the best that exists and make it better. When it does not exist, design it.\" - Sir Henry Royce");
-          builder.append("\n");
-          }
-          if(num1 == 3 || num2 == 3){
-          builder.append("\"To the optimist, the glass is half full. To the pessimist, the glass is half empty. To the engineer, the glass is twice as big as it needs to be.\" - Unknown Author");
-          builder.append("\n");
-          }
         } else {
           // if the request is not recognized at all
 
